@@ -1,0 +1,20 @@
+{
+  "name": "postmessage-demo",
+  "version": "1.0.0",
+  "description": "Monorepo demo with image upload and postMessage communication",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0"
+  },
+  "packageManager": "pnpm@10.14.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

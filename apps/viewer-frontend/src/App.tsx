@@ -41,7 +41,7 @@ function App() {
         setIsLoading(true);
         setError(null);
         setConnectionStatus('connected');
-        
+
         // 模拟加载延迟
         setTimeout(() => {
           setCurrentImage(event.data.data);
@@ -135,31 +135,20 @@ function App() {
     }
   };
 
-  // 全屏查看
-  const toggleFullscreen = () => {
-    const imageElement = document.querySelector('.main-image') as HTMLImageElement;
-    if (!imageElement) return;
-
-    if (!document.fullscreenElement) {
-      imageElement.requestFullscreen().catch(err => {
-        console.error('进入全屏失败:', err);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  };
-
   return (
     <div className="app">
       <header className="app-header">
-        <h1>图片查看器</h1>
-        <p>项目4: 通过PostMessage接收图片信息</p>
-        <div className={`connection-status ${connectionStatus}`}>
-          <span className="status-dot"></span>
-          {connectionStatus === 'waiting' && '等待连接...'}
-          {connectionStatus === 'connected' && '已连接'}
-          {connectionStatus === 'error' && '连接错误'}
-        </div>
+        <p style={{display: 'flex', alignItems: 'center', gap: '30px'}}>
+          <span>图片查看器</span>
+          <span>项目4: 通过PostMessage接收图片信息</span>
+          <span className={`connection-status ${connectionStatus}`}>
+            <span className="status-dot"></span>
+            {connectionStatus === 'waiting' && '等待连接...'}
+            {connectionStatus === 'connected' && '已连接'}
+            {connectionStatus === 'error' && '连接错误'}
+          </span>
+        </p>
+
       </header>
 
       <main className="main-content">
@@ -184,13 +173,6 @@ function App() {
                 className="main-image"
                 onError={() => setError('图片加载失败')}
               />
-              <button 
-                className="fullscreen-btn"
-                onClick={toggleFullscreen}
-                title="全屏查看"
-              >
-                🔍
-              </button>
             </div>
 
             {/* 图片信息面板 */}
@@ -198,14 +180,14 @@ function App() {
               <div className="details-header">
                 <h2>{currentImage.originalname}</h2>
                 <div className="action-buttons">
-                  <button 
+                  <button
                     className="action-btn download-btn"
                     onClick={downloadImage}
                     title="下载图片"
                   >
                     📥 下载
                   </button>
-                  <button 
+                  <button
                     className="action-btn copy-btn"
                     onClick={copyImageLink}
                     title="复制链接"
@@ -243,9 +225,9 @@ function App() {
           <div className="welcome-state">
             <div className="welcome-content">
               <p>等待从项目3接收图片信息...</p>
-              
 
-              
+
+
               <div className="instructions">
                 <h3>使用说明:</h3>
                 <ol>
@@ -278,8 +260,8 @@ function App() {
           <div className="debug-content">
             <p><strong>监听状态:</strong> {connectionStatus}</p>
             <p><strong>运行模式:</strong> {
-              window.parent && window.parent !== window ? 'iframe' : 
-              window.opener ? '弹窗' : '独立窗口'
+              window.parent && window.parent !== window ? 'iframe' :
+                window.opener ? '弹窗' : '独立窗口'
             }</p>
             <p><strong>当前窗口:</strong> {window.location.href}</p>
             <p><strong>父窗口:</strong> {window.opener ? '存在' : '不存在'}</p>

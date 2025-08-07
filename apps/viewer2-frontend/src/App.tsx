@@ -135,19 +135,7 @@ function App() {
     }
   };
 
-  // 全屏查看
-  const toggleFullscreen = () => {
-    const imageElement = document.querySelector('.main-image') as HTMLImageElement;
-    if (!imageElement) return;
 
-    if (!document.fullscreenElement) {
-      imageElement.requestFullscreen().catch(err => {
-        console.error('进入全屏失败:', err);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  };
 
   // 分享图片信息
   const shareImageInfo = async () => {
@@ -174,14 +162,16 @@ function App() {
   return (
     <div className="app viewer2">
       <header className="app-header">
-        <h1>图片查看器 v2</h1>
-        <p>项目5: 通过PostMessage接收图片信息 (增强版)</p>
-        <div className={`connection-status ${connectionStatus}`}>
-          <span className="status-dot"></span>
-          {connectionStatus === 'waiting' && '等待连接...'}
-          {connectionStatus === 'connected' && '已连接'}
-          {connectionStatus === 'error' && '连接错误'}
-        </div>
+          <p style={{display: 'flex', alignItems: 'center', gap: '30px'}}>
+            <span>图片查看器 v2</span>
+            <span>项目5: 通过PostMessage接收图片信息</span>
+            <span className={`connection-status ${connectionStatus}`}>
+            <span className="status-dot"></span>
+            {connectionStatus === 'waiting' && '等待连接...'}
+            {connectionStatus === 'connected' && '已连接'}
+            {connectionStatus === 'error' && '连接错误'}    
+          </span>
+        </p>
       </header>
 
       <main className="main-content">
@@ -206,13 +196,6 @@ function App() {
                 className="main-image"
                 onError={() => setError('图片加载失败')}
               />
-              <button 
-                className="fullscreen-btn"
-                onClick={toggleFullscreen}
-                title="全屏查看"
-              >
-                🔍
-              </button>
             </div>
 
             {/* 图片信息面板 */}

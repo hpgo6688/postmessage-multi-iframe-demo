@@ -277,7 +277,7 @@ function App() {
              {/* 项目4查看器 */}
              <div className="viewer-section">
               <div className="viewer-header">
-                <h2>项目4 查看器 (标准版)</h2>
+                <h2>项目4 查看器</h2>
                 <div className="viewer-status">
                   <span className="status-dot"></span>
                   项目4 iframe
@@ -296,7 +296,7 @@ function App() {
             {/* 项目5查看器 */}
             <div className="viewer-section">
               <div className="viewer-header">
-                <h2>项目5 查看器 (增强版)</h2>
+                <h2>项目5 查看器</h2>
                 <div className="viewer-status">
                   <span className="status-dot"></span>
                   项目5 iframe
